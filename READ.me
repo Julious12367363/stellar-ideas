@@ -1,0 +1,25 @@
+csv-файл с данными пользователей должен быль следующего формата:
+id - идентификатор пользователя
+name - имя пользователя
+surname - фамилия
+email - электронная почта
+password - пароль
+date - дата рождения
+
+csv-файл с данными проектов быль следующего формата:
+	- id - идентификатор пользователя
+	- project_name - название проекта
+	- project_text - описание проекта
+	- project_resume - краткое описаниие проекта
+	- project_img - изображение 
+	- author - автор проекта
+
+
+	  <h2>  Название: </h2>{{ project.project_name }}
+     <h2> id:</h2>{{ project.id }} <br>
+     <h2> Описание:</h2>{{ project.project_text}} <br>
+     <h2> Краткое описание проекта:</h2>{{ project.project_resume }} <br>
+     <h2> Изображение:</h2>{{ project.project_img}} <br>
+     <h2> Автор:</h2>{{ project.author}} <br>
+
+	 https://bootstrap-5.ru/docs/5.3/examples/carousel-rtl/
