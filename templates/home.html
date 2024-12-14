@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+      <div class="ftco-blocks-cover-1">
+        <div class="ftco-cover-1 overlay" style="background-image: url('{{ url_for('static', filename='images/main_background.jpg') }}');">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <h1>Оцените проекты учеников</h1>
+                <p class="mb-5">На нашем сайте представлены проекты, созданные учениками. Вы можете ознакомиться с ними и поставить автору любое количество баллов. На что потратить баллы ученик сможет выбрать в личном кабинете. Учитель в своем личном кабинете сможет определить, на что может тратить баллы ученик.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- END .ftco-cover-1 -->
+        <div class="ftco-service-image-1 pb-5">
+          <div class="container">
+            <div class="owl-carousel owl-all">
+              <div class="service text-center">
+                <a href="#why-us-section"><img src="{{ url_for('static', filename='images/startup1.jpg') }}" alt="Image" class="img-fluid"></a>
+                <div class="px-md-3">
+                  <h3><a href="#why-us-section">Новые идеи</a></h3>
+                  <p>Учимся вместе: творим, оцениваем, достигаем!</p>
+                </div>
+              </div>
+              <div class="service text-center">
+                <a href="#why-us-section"><img src="{{ url_for('static', filename='images/startup2.jpg') }}" alt="Image" class="img-fluid"></a>
+                <div class="px-md-3">
+                  <h3><a href="#why-us-section">Новые знания</a></h3>
+                  <p>Знания — сила! Накапливай баллы, получай успех!</p>
+                </div>
+              </div>
+              <div class="service text-center">
+                <a href="#why-us-section"><img src="{{ url_for('static', filename='images/startup3.jpg') }}" alt="Image" class="img-fluid"></a>
+                <div class="px-md-3">
+                  <h3><a href="#why-us-section">Новые достижения</a></h3>
+                  <p>Создавай, оценивай, делись: учёба без границ!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="site-section bg-light" id="services-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+              <div class="block-heading-1">
+                <h2>Основные функции</h2>
+                <p>Загружайте свои проекты и получайте баллы!</p>
+              </div>
+            </div>
+          </div>
+          <div class="owl-carousel owl-all">
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3" style="margin-top: 10px;">Регистрация и профили пользователей</h3>
+              <ul class="ul-check primary list-unstyled mt-5">
+                <li>Ученики и учителя создают свои профили.</li>
+                <li> Учителя могут видеть и оценивать проекты учеников.</li></ul>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3" style="margin-top: 10px;">Загрузка проектов</h3>
+              <p>Ученики придумывают идею и загружают свои проекты на платформу. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3" style="margin-top: 10px;">Торговая система для баллов</h3>
+              <p>Ученики могут тратить баллы на различные привилегии, например:</p>
+                  <ul class="ul-check primary list-unstyled mt-5">
+                  <li>Помощь в подготовке домашнего задания.</li>
+                  <li>Возможность пропустить один урок.</li>
+                  <li>Право не отвечать на уроке.</li></ul>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3">Формирование сообщества</h3>
+              <p>Наш сайт - это  площадка для обмена опытом, идеями и рекомендациями между авторами проектов. Он создает динамичное сообщество профессионалов и единомышленников. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3">Повышение мотивации к учебе</h3>
+              <p>Такой проект может создать здоровую конкурентную среду и повысить интерес к учебе, предлагая ученикам не только оценки, но и реальные преимущества за их усилия. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3"> Плюсы проекта</h3>
+              <ul class="ul-check primary list-unstyled mt-5">
+                <li>Повышение мотивации у учеников за счет возможности использовать свои баллы.</li>
+                <li>Повышение вовлеченности в учебный процесс через творчество и конкуренцию.</li>
+                <li>Упрощение обратной связи между учениками и учителями.</li>
+                <li>Формирование более доброжелательной и активной школьной среды.</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="block__73694 site-section border-top" id="why-us-section">
+        <div class="container">
+          <div class="row d-flex no-gutters align-items-stretch">
+
+            <div class="col-12 col-lg-6 block__73422 order-lg-2" style="background-image: url('{{ url_for('static', filename='images/main_background.jpg') }}');" data-aos="fade-left" data-aos-delay="">
+            </div>
+
+            <div class="col-lg-5 mr-auto p-lg-5 mt-4 mt-lg-0 order-lg-1" data-aos="fade-right" data-aos-delay="">
+              <h2 class="mb-4 text-black">Почему мы?</h2>
+              <h4 class="text-primary">Мы работаем эффективно!</h4>
+              <p>Присоединяясь к нашему проекту вы получаете возможность найти тот самый уникальный проект, который позволит инвестировать в него и получить отдачу в будущем.</p>
+
+              <ul class="ul-check primary list-unstyled mt-5">
+                <li>Доступ к базе проектов</li>
+                <li>Проекты, представленные авторами</li>
+                <li>Самые свежие идеи</li>
+                <li>Возможность найти уникальную идею</li>
+                <li>Все проекты на одном сайте</li>
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+
+    {% endblock content %}

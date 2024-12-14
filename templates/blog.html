@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+{% if blog %}
+{% if blog.user_id == session.id %}
+<div class="blog_title" id="btn">
+    <div class="container">
+        <div class="row">
+            <div class="form-group row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <a href="{{ url_for('blog_update', id=blog.id) }}" class="btn btn-secondary btn-md">Редактировать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="block__73694 site-section border-top" id="why-us-section">
+    <div class="container">
+        <div class="row d-flex no-gutters align-items-stretch">
+            <div class="col-12 col-lg-6 block__73422 order-lg-2"
+                 style="background-image: url('/static/images/{{ blog.blog_img }}');
+                        background-size: cover;
+                        background-position: center;
+                        height: 500px;
+                        background-color: lightgray;">
+                {% if not blog.blog_img %}
+                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                     width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                     aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="lightgray" />
+
+                    <text x="50%" y="50%" fill="black" dy=".3em">{{ blog.title }}</text>
+                </svg>
+                {% endif %}
+            </div>
+
+            <div class="col-lg-5 mr-auto p-lg-5 mt-4 mt-lg-0 order-lg-1" data-aos="fade-right" data-aos-delay="">
+                <h2 class="mb-4 text-black">{{ blog.blog_title }}</h2>
+                {% if blog.user %}
+                <h4 class="text-primary">{{ blog.user.name }} {{ blog.user.surname }}</h4>
+                {% endif %}
+                <div class="meta">{{ blog.data_creation }}</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mt-4" style="width: 100%;" data-aos="fade-up" data-aos-delay="">
+                <p>{{ blog.blog_text }}</p> <!-- Основной текст растягивается на всю ширину -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

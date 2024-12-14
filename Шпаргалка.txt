@@ -1,0 +1,117 @@
+
+Перейти в папку
+cd \site\invest_project
+
+Создать виртуальное окружение
+python -m venv venv
+
+Активировать виртуальное окружение
+venv\Scripts\activate
+
+Установить зависимости из файла
+pip install -r requirements.txt
+
+Скопировать файлы проекта в папку invest_project.
+Файлы .html скопировать в папку invest_project/templates
+
+Создать папку static/images/ для загружаемых файлов
+
+Запустить проект
+python main2.py
+
+В браузере открыть страницу
+http://127.0.0.1:5000/invest_project/login/mainpage
+
+
+Сохранить зависимости в файл
+pip freeze > requirements.txt
+
+
+В шаблон с формой добавить
+<input type="file" name="file" accept="image/*" required>
+
+В main добавить
+# Настройка пути для загрузки файлов
+UPLOAD_FOLDER = 'static/images/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Разрешенные расширения
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+
+# Функция для проверки расширения файла
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+После app = Flask(__name__)
+Добавить строку
+app.secret_key = 'your_secret_key'
+
+добавить импорты
+from flask import flash
+from werkzeug.utils import secure_filename
+
+
+в маршруты для шаблонов, где должны отображаться картинки добавить параметр
+static_path=static_path
+
+Для mainpage() будет так:
+ return render_template('projects_.html', users_projects=users_projects, static_path=static_path)
+
+Маршрут для создания будет такой:
+@app.route('/invest_project/login/mainpage/account/creation', methods=['GET', 'POST'])
+def creation():
+    author = None
+    project_name = None
+    project_text = None
+    project_resume = None
+    project_img = None
+    if request.method == 'POST':
+        author = request.form['author']
+        project_name = request.form['project_name']
+        project_text = request.form['project_text']
+        project_resume = request.form['project_resume']
+
+        # Проверяем, что пользователь отправил файл
+        if 'file' not in request.files:
+            flash('Нет файла для загрузки')
+        else:
+            file_img = request.files['file']
+
+            # Проверяем, что файл корректен и сохраняем его
+            if file_img and allowed_file(file_img.filename):
+                filename_img = secure_filename(file_img.filename)  # Обработка имени файла
+                file_img.save(os.path.join(
+                    app.config['UPLOAD_FOLDER'],
+                    filename_img
+                    ))
+                project_img = filename_img
+                flash('Файл успешно загружен!')
+
+        filename = 'projects.csv' # Надо вынести в константы и дальнейшую логику записи в файл сделать отдельной функцией, а здесь только вызывать
+        first_column_values = []
+        with open(filename, 'r', encoding='utf-8') as file: # одна отдельная функция определения нового id
+            for line in file:
+                line = line.strip()
+                if line:
+                    values = line.split(',')
+                    first_column_values.append(values[0])
+        try:
+            id = int(first_column_values[-1]) + 1
+        except:
+            id = 0
+        values = [id, project_name, project_resume, project_text, author, project_img]
+        with open(filename, 'a', encoding='utf-8') as file: # вторая отдельная функция записи в файл (из нее вызвать функцию определения id) и функцию переделать на csv-файл
+            file.write("\n")
+            for value in values:
+                file.write(str(value) + ',')
+        return redirect(url_for("account"))
+    return render_template('creation.html')
+
+
+
+    Последняя функция записи в файл должна выглядеть так:
+        with open(filename, 'a', encoding='utf-8') as file:
+            file_writer = csv.writer(file, delimiter=",", lineterminator="\r")
+            file_writer.writerow(values)

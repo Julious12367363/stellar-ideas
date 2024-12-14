@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 blog-content">
+		{% if user.who == "Ученик" %}
+		<p class="lead">Здесь вы можете выбрать, на что ученики смогут потратить заработанные баллы.</p>
+		<p class="lead">Ваши баллы:</p>
+		<span style="color: orange; font-size: 1.5em; width: 50px; text-align: right; margin-right: 15px;">{{ points }}</span>
+		{% else %}
+        <p class="lead">Здесь вы можете определить, на что ученики смогут потратить заработанные баллы.</p>
+		{% endif %}
+		<br>
+		{% if teacher %}
+		<span style="color: orange; font-size: 1.5em; width: 50px; text-align: right; margin-right: 15px;">{{ teacher.name }} {{ teacher.surname }}</span>
+		{% endif %}
+        <h1>Выберите опции</h1>
+        {% if items %}
+        <form action="" method="POST" enctype="multipart/form-data">
+          <div class="custom-control custom-checkbox">
+            {% for item in items %}
+              <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <span style="color: orange; font-size: 1.5em; width: 50px; text-align: right; margin-right: 15px;">{{ item.point }}</span> <!-- Визуально отображаемый элемент -->
+                <span style="color: orange; font-size: 1.5em; width: 50px; text-align: right; margin-right: 15px; visibility: hidden;">{{ item.point }}</span> <!-- Скрытый элемент -->
+                <input type="checkbox" name="selected_items[]" value="{{ item.id }}" class="custom-control-input" id="customCheck{{ item.id }}" style="margin-right: 10px;">
+                <label class="custom-control-label" for="customCheck{{ item.id }}">
+                     {{ item.value }}
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+		  {% if user.who == "Ученик" %}
+		  <input type="submit" value="Потратить" class="btn-add">
+		  {% else %}
+          <input type="submit" value="Добавить" class="btn-add">
+		  {% endif %}
+        </form>
+        {% else %}
+        <p class="lead">Опции отсутствуют</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

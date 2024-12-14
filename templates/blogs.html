@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if blogs %}
+
+<div class="site-section py-5" id="blog-section">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="block-heading-1" data-aos="fade-right" data-aos-delay="">
+                    <h2>Статьи</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-lg-6 mb-4">
+                <div class="d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
+                    <a href="{{ url_for('blog', id=blog.id) }}" class="blog-thumbnail">
+                        {% if blog.blog_img %}
+                            <img src="/static/images/{{ blog.blog_img }}" alt="{{ blog.title }}" class="img-fluid">
+                        {% else %}
+                            <div style="width: 100%; height: 200px; background-color: lightgray;"></div>
+                        {% endif %}
+                    </a>
+                    <div class="blog-excerpt">
+                        <span class="d-block text-muted">{{ blog.data_creation }}</span>
+                        <h2 class="h4 mb-3"><a href="{{ url_for('blog', id=blog.id) }}">{{ blog.blog_title }}</a></h2>
+                        {% if blog.user %}
+                        <h4 class="text-primary">{{ blog.user.name }} {{ blog.user.surname }}</h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+{% else %}
+<h2 align="center">Здесь могли быть ваши статьи</h2>
+<hr class="featurette-divider">
+{% endif %}
+{% endblock content %}

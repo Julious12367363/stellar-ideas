@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<style>
+			body {
+				font-family: sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				background-color: #d0e7ff; /* Светло-голубой фон */
+			}
+			.container {
+				background-color: #fff;
+				padding: 40px;
+				border-radius: 5px;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Увеличенная тень */
+				width: 350px;
+			}
+			h2 {
+				text-align: center;
+				margin-bottom: 20px;
+				color: #000; /* Черный цвет текста заголовка */
+			}
+			input[type="password"],
+			input[type="email"],
+
+			select {
+				width: 100%;
+				padding: 12px;
+				margin: 10px 0;
+				box-sizing: border-box;
+				border: 1px solid #d4d2d2;
+				border-radius: 4px;
+				color: #666; /* Серый цвет текста в полях ввода */
+			}
+
+			input::placeholder,
+			select {
+				color: #999; /* Цвет текста плейсхолдера */
+			}
+
+			input:focus,
+			select:focus {
+				border-color: #4c6e92; /* Синий цвет рамки при выделении */
+				outline: none; /* Убираем стандартное выделение */
+			}
+
+			button {
+				background-color: #4c6e92; /* Синий цвет кнопки */
+				color: white;
+				padding: 12px 20px;
+				margin: 10px 0;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				width: 100%;
+				transition: background-color 0.3s ease; /* Плавный переход цвета при наведении */
+			}
+
+			button:hover {
+				background-color: #20548b; /* Темный синий цвет при наведении */
+			}
+
+			label {
+				color: #666; /* Серый цвет текста меток */
+			}
+
+			.password-container {
+				position: relative;
+			}
+
+			.toggle-password {
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+				cursor: pointer;
+				color: #666;
+			}
+			h1{
+				color: #20548b;
+				text-align: center;
+				font-size: 40px;
+				font-weight: bold;
+   			}
+		</style>
+	<body>
+
+		<div class="container">
+			<img src="{{ url_for('static', filename='images/logo.png') }}" alt="#"> <img src="{{ url_for('static', filename='images/logo_text.jpg') }}" alt="#">
+			<br><br>
+
+			<form method="POST" align="center" enctype="multipart/form-data">
+				<h1 align="center"> Войти </h1>
+
+				<label align="center" for="email"></label>
+				<input type="email" align="center"
+					   placeholder="Email"
+					   value="" maxlength="25"
+					   name="email" id="email"><br>
+				<p>
+					<label align="center" for="password"></label>
+					<input type="password" align="center"
+						   placeholder="Пароль"
+						   value="" maxlength="25"
+						   name="password" id="password"><br><br>
+				<p>
+					<button type="submit">Войти</button>
+			</form>
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<ul>
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+
+</body>
+</html>

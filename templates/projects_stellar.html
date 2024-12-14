@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if users_projects %}
+
+<div class="site-section py-5" id="blog-section">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="block-heading-1" data-aos="fade-right" data-aos-delay="">
+                    <h2>Проекты</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for project in users_projects %}
+            <div class="col-lg-6 mb-4">
+                <div class="d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
+                    <a href="{{ url_for('project', id=project.id) }}" class="blog-thumbnail">
+                        {% if project.project_img %}
+                            <img src="/static/images/{{ project.project_img }}" alt="{{ project.project_name }}" class="img-fluid">
+                        {% else %}
+                            <div style="width: 100%; height: 200px; background-color: lightgray;"></div>
+                        {% endif %}
+                    </a>
+                    <div class="blog-excerpt">
+                        <!-- <span class="d-block text-muted">Apr 19, 2019</span> -->
+                        <h2 class="h4 mb-3"><a href="{{ url_for('project', id=project.id) }}">{{ project.project_name }}</a></h2>
+                        <p>{{ project.project_resume }}</p>
+                        <p><h2>{{project.points}}</h2></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+{% else %}
+<h2 align="center">Здесь могли быть ваши проекты</h2>
+<hr class="featurette-divider">
+{% endif %}
+{% endblock content %}

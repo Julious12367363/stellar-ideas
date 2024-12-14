@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+      <div class="ftco-blocks-cover-1">
+        <div class="ftco-cover-1 overlay" style="background-image: url('{{ url_for('static', filename='images/main_background.jpg') }}');">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <h1>Оцените проекты учеников</h1>
+                <p class="mb-5">На нашем сайте представлены проекты, созданные учениками. Вы можете ознакомиться с ними и поставить автору любое количество баллов. На что потратить баллы ученик сможет выбрать в личном кабинете. Учитель в своем личном кабинете сможет определить, на что может тратить баллы ученик.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- END .ftco-cover-1 -->
+        <div class="ftco-service-image-1 pb-5">
+          <div class="container">
+            <div class="owl-carousel owl-all">
+              <div class="service text-center">
+                <a href="#why-us-section"><img src="{{ url_for('static', filename='images/health.jpg') }}" alt="Image" class="img-fluid"></a>
+                <div class="px-md-3">
+                  <h3><a href="#why-us-section">Быстрый поиск</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                </div>
+              </div>
+              <div class="service text-center">
+                <a href="#why-us-section"><img src="{{ url_for('static', filename='images/health.jpg') }}" alt="Image" class="img-fluid"></a>
+                <div class="px-md-3">
+                  <h3><a href="#why-us-section">База проектов</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                </div>
+              </div>
+              <div class="service text-center">
+                <a href="#why-us-section"><img src="{{ url_for('static', filename='images/health.jpg') }}" alt="Image" class="img-fluid"></a>
+                <div class="px-md-3">
+                  <h3><a href="#why-us-section">Контакты авторов</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="site-section bg-light" id="services-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+              <div class="block-heading-1">
+                <h2>Что мы предлагаем?</h2>
+                <p>Получите доступ к базе инвестиционых проектов и найдите для себя идею для дальнейшего развития!</p>
+              </div>
+            </div>
+          </div>
+          <div class="owl-carousel owl-all">
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3" style="margin-top: 10px;">Простота доступа к проектам</h3>
+              <p>Сайт предоставляет удобную платформу для авторов и инвесторов, облегчая поиск и размещение проектов. Инвесторы могут легко найти стартапы, соответствующие их интересам и критериям, а авторам — представить свои идеи широкой аудитории. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3" style="margin-top: 10px;">Увеличение видимости стартапов</h3>
+              <p>Размещение проектов на специализированной платформе повышает их видимость и привлекает целевую аудиторию. Это дает возможность предпринимателям заявить о себе и получить обратную связь от потенциальных инвесторов и экспертов. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3" style="margin-top: 10px;">Прозрачность и доверие</h3>
+              <p>Проекты проходят предварительную проверку, что поможет повысить уровень доверия между авторами стартапов и инвесторами. Прозрачность информации о компаниях и их авторах создают более надежную среду для сотрудничества. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3">Формирование сообщества</h3>
+              <p>Наш сайт - это  площадка для обмена опытом, идеями и рекомендациями между авторами проектов и инвесторами. Он создает динамичное сообщество профессионалов и единомышленников. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3">Маркетинговая поддержка</h3>
+              <p>Рекламная компания может предоставить авторам возможности для продвижения стартапов через различные каналы, включая контентный маркетинг, email-рассылки и социальные сети, что способствует привлечению большего числа инвесторов. </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 30px; height: auto;">
+              </div>
+              <h3 class="mb-3"> Аналитика и обратная связь</h3>
+              <p>Инвесторы и пользователи сайта в будущем смогут оставлять отзывы и оценки проектов, что позволит авторам получить полезные рекомендации и улучшать свои идеи. Кроме того, аналитические инструменты могут помочь в понимании рынка и тенденций. </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+
+
+      <div class="block__73694 site-section border-top" id="why-us-section">
+        <div class="container">
+          <div class="row d-flex no-gutters align-items-stretch">
+
+            <div class="col-12 col-lg-6 block__73422 order-lg-2" style="background-image: url('{{ url_for('static', filename='images/main_background.jpg') }}');" data-aos="fade-left" data-aos-delay="">
+            </div>
+
+            <div class="col-lg-5 mr-auto p-lg-5 mt-4 mt-lg-0 order-lg-1" data-aos="fade-right" data-aos-delay="">
+              <h2 class="mb-4 text-black">Почему мы?</h2>
+              <h4 class="text-primary">Мы работаем эффективно!</h4>
+              <p>Присоединяясь к нашему проекту вы получаете возможность найти тот самый уникальный проект, который позволит инвестировать в него и получить отдачу в будущем.</p>
+
+              <ul class="ul-check primary list-unstyled mt-5">
+                <li>Доступ к базе проектов</li>
+                <li>Проекты, представленные авторами</li>
+                <li>Самые свежие идеи</li>
+                <li>Возможность найти уникальную идею</li>
+                <li>Все проекты на одном сайте</li>
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+
+    {% endblock content %}

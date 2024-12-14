@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="site-section" id="about-section">
+	<div class="container">
+		<div class="row mb-5 justify-content-center">
+			<div class="col-md-7 text-center">
+				<div class="block-heading-1" data-aos="fade-up">
+					<h2>Личный кабинет</h2>
+					{% if user.who == "Ученик" %}
+					<p>Здесь вы можете увидеть остаток баллов на вашем счете. Вы можете выбрать, на что их потратить.</p>
+					{% else %}
+					<p>Здесь вы можете определить, на что ученики могут потратить баллы, заработанные проектами.</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="site-section bg-light" id="user-section">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-md-6 mb-4">
+				<div class="block-team-member-1 text-center rounded h-100" style="padding: 20px; border: 1px solid #e0e0e0;">
+					<figure>
+						{% if user.who == "Ученик" %}
+						<img src="/static/images/person.jpg" alt="Image" class="img-fluid rounded-circle">
+						{% else %}
+						<img src="/static/images/teacher.jpg" alt="Image" class="img-fluid rounded-circle">
+						{% endif %}
+					</figure>
+					<h3 class="font-size-20 text-black">{{ user.name }} {{ user.surname }}</h3>
+					<span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">{{ user.who }}</span>
+					<p class="mb-4">Дата рождения: {{ user.date }}</p>
+					<h2 class="font-size-20 text-black">{% if user.who == "Ученик" %}Класс{% else %}Кабинет{% endif %} {{ user.room }}</h2>
+					<div class="col-12">
+						<a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">{{ user.email }}</span></a>
+					</div>
+				</div>
+			</div>
+
+			{% if user.who == "Ученик" %}
+			<div class="col-md-6 mb-4">
+				<div class="row">
+					<div class="col-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+						<div class="block-counter-1 text-center">
+							<span class="number"><span data-number="{{ points }}">{{ points }}</span>+</span>
+							<span class="caption">Получено баллов всего</span>
+						</div>
+					</div>
+					<div class="col-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+						<div class="block-counter-1 text-center">
+							<span class="number"><span data-number="{{ points_remainder }}">0</span></span>
+							<span class="caption">Потрачено баллов</span>
+						</div>
+					</div>
+					<div class="col-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+						<div class="block-counter-1 text-center">
+							<span class="number"><span data-number="{{ points_total }}">0</span></span>
+							<span class="caption">Остаток баллов</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% if user.who == "Ученик" %}
+<div class="site-section bg-light" id="pricing-section">
+	<div class="container">
+		{% for teacher in data %}
+		<div class="row mb-5 justify-content-center" data-aos="fade-up">
+			<div class="col-md-10">
+				<div class="row align-items-stretch">
+					<!-- Используем align-items-stretch для равной высоты -->
+					<div class="col-md-4 mb-4">
+						<div class="card">
+							<div class="card-body">
+								<div class="pricing h-100">
+									<h3 class="text-center text-black">Учитель </h3>
+									<div class="price text-center mb-4">
+										<span style="color: orange; font-size: 1.8em; width: 50px; text-align: right; margin-right: 15px;">{{ teacher.name }} {{ teacher.surname }}</span>
+										<h3 class="font-size-20 text-black">Кабинет {{ teacher.room }}</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8 mb-4">
+						<div class="pricing h-100">
+							<h3 class="text-center text-black">На что можно потратить баллы</h3>
+							<ul class="list-unstyled ul-check success mb-5">
+								{% for item in teacher.value %}
+								<li class="remove">{{ item.value }}-{{ item.point }}</li>
+								{% endfor %}
+							</ul>
+							<p class="text-center">
+								<a href="{{ url_for('use_points',  teacher_id=teacher.id) }}" class="btn btn-secondary btn-md">Потратить баллы</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% else %}
+	{% for teacher in data %}
+	{% if user.id == teacher.id %}
+<div class="site-section bg-light" id="pricing-section">
+	<div class="container">
+		<div class="col-md-8 mb-4">
+			<div class="pricing h-100">
+				<!-- Добавляем класс h-100 -->
+				<h3 class="text-center text-black">На что вы разрешили потратить баллы</h3>
+				<ul class="list-unstyled ul-check success mb-5">
+					{% for item in teacher.value %}
+					<li class="remove">{{ item.value }}-{{ item.point }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+			{% endif %}
+	{% endfor %}
+
+<p class="text-center">
+	<a href="{{ url_for('evaluation') }}" class="btn btn-secondary btn-md">Добавить опции</a>
+</p>
+
+{% endif %}
+{% endblock %}

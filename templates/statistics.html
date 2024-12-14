@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.who == "Ученик" %}
+<div class="site-section bg-light" id="pricing-section">
+	<div class="container">
+		{% for teacher in used_items %}
+		<div class="row mb-5 justify-content-center" data-aos="fade-up">
+			<div class="col-md-10">
+				<div class="row align-items-stretch">
+					<!-- Используем align-items-stretch для равной высоты -->
+					<div class="col-md-4 mb-4">
+						<div class="card">
+							<div class="card-body">
+                <div class="pricing h-100">
+                  <h3 class="text-center text-black">Учитель</h3>
+                  <div class="price text-center mb-4">
+                    <span style="color: orange; font-size: 1.8em; width: 50px; text-align: right; margin-right: 15px;">{{ teacher.user.name }} {{ teacher.user.surname }}</span>
+                    <h3 class="font-size-20 text-black">Кабинет {{ teacher.user.room }}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+					</div>
+					<div class="col-md-8 mb-4">
+            <div class="pricing h-100">
+                <h3 class="text-center text-black">На что потрачены баллы</h3>
+                <ul class="list-unstyled ul-check success mb-5">
+                    {% for option in teacher.used_items %}
+                    <li class="remove">
+                        <span class="date">Дата: {{ option.date }}. </span>
+                        <span class="points">Баллы: {{ option.point }}. </span>
+                        <span class="value">На что потрачено: {{ option.value }}. </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% else %}
+<h2>К сожалению, статистика для учителей пока недоступна</h2>
+{% endif %}
+
+{% endblock %}
