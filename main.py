@@ -464,6 +464,9 @@ def blog(id):
 @app.route('/blog/create', methods=['GET', 'POST'])
 @login_required
 def blog_create():
+    user = read_user(session["id"])
+    if user['who'] == "Ученик":
+        return redirect(url_for('blogs'))
     user_id = None
     blog_title = None
     blog_text = None
